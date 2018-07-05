@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Medyasoft.HealthCare.Views.MainView"
+             xmlns:views="clr-namespace:Medyasoft.HealthCare.Views"
+             Title="Bethany's Pie Shop"
+              xmlns:utility="clr-namespace:Medyasoft.HealthCare.Utility;assembly=Medyasoft.HealthCare"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             MasterBehavior="Popover"
+                  >
+    <MasterDetailPage.Master>
+        <views:MenuView BindingContext="{Binding MenuViewModel}" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage></ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

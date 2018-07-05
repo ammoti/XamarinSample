@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utility="clr-namespace:Medyasoft.HealthCare.Utility;assembly=Medyasoft.HealthCare"
+             xmlns:telerikChart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+              xmlns:local="clr-namespace:Medyasoft.HealthCare;assembly=Medyasoft.HealthCare"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             Title="Charts"
+             x:Class="Medyasoft.HealthCare.Views.ChartView">
+    <ContentPage.Content>
+        <ScrollView >
+            <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="7*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Picker x:Name="picker" Title="Select a monkey" SelectedIndexChanged="picker_SelectedIndexChanged" SelectedIndex="{Binding Selectedindex, Mode=TwoWay}" VerticalOptions="StartAndExpand" Margin="4">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Baboon</x:String>
+                            <x:String>Capuchin Monkey</x:String>
+                            <x:String>Blue Monkey</x:String>
+                            <x:String>Squirrel Monkey</x:String>
+                            <x:String>Golden Lion Tamarin</x:String>
+                            <x:String>Howler Monkey</x:String>
+                            <x:String>Japanese Macaque</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Grid Grid.Row="1" Margin="5" BackgroundColor="White" x:Name="chartField" RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <telerikChart:RadCartesianChart x:Name="chart" HorizontalOptions="CenterAndExpand">
+                        <telerikChart:RadCartesianChart.BindingContext>
+                            <local:Models.Chart/>
+                        </telerikChart:RadCartesianChart.BindingContext>
+                        <telerikChart:RadCartesianChart.HorizontalAxis>
+                            <telerikChart:CategoricalAxis />
+                        </telerikChart:RadCartesianChart.HorizontalAxis>
+                        <telerikChart:RadCartesianChart.VerticalAxis>
+                            <telerikChart:NumericalAxis />
+                        </telerikChart:RadCartesianChart.VerticalAxis>
+                        <telerikChart:RadCartesianChart.Series>
+                            <telerikChart:BarSeries CategoryBinding="Category" 
+                            ValueBinding="Value" 
+                            ItemsSource="{Binding Data}" />
+                        </telerikChart:RadCartesianChart.Series>
+                    </telerikChart:RadCartesianChart>
+                </Grid>
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
